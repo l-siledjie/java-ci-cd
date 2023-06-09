@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns = "http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="row container-fluid">
+    <div class="card col-md-6 col-sm-12 p-5 mt-5 shadow-lg mx-auto">
+        <div class="alert alert-primary text-center text-uppercase fw-bold">
+            List of Clients
+        </div>
+
+        <table class="table table-striped" style="width: 100%">
+            <thead class="bg-dark bg-opacity-50">
+            <tr>
+                <th> Id </th>
+                <th> First Name </th>
+                <th> Surname </th>
+                <th> Title </th>
+                <th> Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="clients : ${ListClients}"></tr>
+                    <!--/*@thymesVar id="client" type=""*/-->
+                    <!--/*@thymesVar id="clients" type=""*/-->
+                    <td th:text="${clients.id_client}"></td>
+                    <td th:text="${clients.fname_c}"></td>
+                    <td th:text="${clients.surname_c}"></td>
+                    <td th:text="${clients.title}"></td>
+                    <td class="text-center">
+                        <a class="btn btn-primary btn-sm">
+                            modify <i class="fas fa-user-edit mt-2"> </i>
+                        </a>
+                        <a class="btn btn-danger btn-sm">
+                            delete <i class="fas fa-user-times mt-2"> </i>
+                        </a>
+                    </td>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th> Id </th>
+                    <th> First Name </th>
+                    <th> Surname </th>
+                    <th> Actions </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <h1> List of Clients</h1>
+</body>
+</html>
