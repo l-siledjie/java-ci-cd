@@ -1,0 +1,29 @@
+name: Java Pipeline
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: setup jdk
+        uses: actions/setup-java@1
+        with:
+          distribution: 'oracle'
+          java-version: '17'
+          cache: maven
+      - name: Install dependencies
+        run: mvn package
+        build: mvn clean install -X
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          - name: Java artifact
+            path: target\demoexample-0.0.1-SNAPSHOT.jar
